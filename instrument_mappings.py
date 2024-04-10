@@ -1,4 +1,5 @@
-data = [
+import pandas as pd
+program_map_all_midis = [
     (0, 'Piano', 'Acoustic Grand Piano'),
     (1, 'Piano', 'Bright Acoustic Piano'),
     (2, 'Piano', 'Electric Grand Piano'),
@@ -131,7 +132,7 @@ data = [
 
 
 
-my_data = [
+program_map_default = [
     (0, 'Piano', 'Acoustic Grand Piano'),
     (1, 'Piano', 'Bright Acoustic Piano'),
     (2, 'Piano', 'Electric Grand Piano'),
@@ -270,3 +271,9 @@ class_to_program_mapping = {
     'Lead' : 80,
     'Drums' : 0
 }
+
+def read_custom_program_map(filename:str):
+    return pd.read_csv(filename).to_numpy()
+
+def read_custom_class_to_program_mapping(filename:str):
+    return pd.read_csv(filename).to_dict()['Instrument']

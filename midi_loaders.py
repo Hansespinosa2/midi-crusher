@@ -1,6 +1,6 @@
 import os
 import pretty_midi as pm
-from globals_and_longs import data, my_data, class_to_program_mapping
+from instrument_mappings import program_map_all_midis, program_map_default, class_to_program_mapping
 import instrument_analyzers as ia
 import musical_features_cleaner as mc
 
@@ -52,11 +52,11 @@ def load_midi_files(root_directory:str = 'vg_music_database', company:str = None
 
     
 def get_program_to_class_hash():
-    hash_table = {number: cls for number, cls, _ in data}
+    hash_table = {number: cls for number, cls, _ in program_map_all_midis}
     return hash_table
 
 def get_program_to_compressed_hash():
-    hash_table = {number: cls for number, cls, _ in my_data}
+    hash_table = {number: cls for number, cls, _ in program_map_default}
     return hash_table
 
 

@@ -1,0 +1,129 @@
+Program,Compressed Instrument,Default Instrument
+0,Piano,Acoustic Grand Piano
+1,Piano,Bright Acoustic Piano
+2,Piano,Electric Grand Piano
+3,Piano,Honky-tonk Piano
+4,Piano,Rhodes Piano
+5,Piano,Chorused Piano
+6,Piano,Harpsichord
+7,Piano,Clavinet
+8,Piano,Celesta
+9,Piano,Glockenspiel
+10,Piano,Music box
+11,Piano,Vibraphone
+12,Piano,Marimba
+13,Piano,Xylophone
+14,Piano,Tubular Bells
+15,Piano,Dulcimer
+16,Piano,Hammond Organ
+17,Piano,Percussive Organ
+18,Piano,Rock Organ
+19,Piano,Church Organ
+20,Piano,Reed Organ
+21,Lead,Accordion
+22,Lead,Harmonica
+23,Lead,Tango Accordion
+24,Guitar,Acoustic Guitar (nylon)
+25,Guitar,Acoustic Guitar (steel)
+26,Guitar,Electric Guitar (jazz)
+27,Guitar,Electric Guitar (clean)
+28,Guitar,Electric Guitar (muted)
+29,Guitar,Overdriven Guitar
+30,Guitar,Distortion Guitar
+31,Guitar,Guitar Harmonics
+32,Bass,Acoustic Bass
+33,Bass,Electric Bass (finger)
+34,Bass,Electric Bass (pick)
+35,Bass,Fretless Bass
+36,Bass,Slap Bass 1
+37,Bass,Slap Bass 2
+38,Bass,Synth Bass 1
+39,Bass,Synth Bass 2
+40,Strings,Violin
+41,Strings,Viola
+42,Strings,Cello
+43,Bass,Contrabass
+44,Strings,Tremolo Strings
+45,Strings,Pizzicato Strings
+46,Strings,Orchestral Harp
+47,Strings,Timpani
+48,Strings,String Ensemble 1
+49,Strings,String Ensemble 2
+50,Strings,Synth Strings 1
+51,Strings,Synth Strings 2
+52,Strings,Choir Aahs
+53,Strings,Voice Oohs
+54,Strings,Synth Voice
+55,Strings,Orchestra Hit
+56,Strings,Trumpet
+57,Strings,Trombone
+58,Strings,Tuba
+59,Strings,Muted Trumpet
+60,Strings,French Horn
+61,Strings,Brass Section
+62,Strings,Synth Brass 1
+63,Strings,Synth Brass 2
+64,Lead,Soprano Sax
+65,Lead,Alto Sax
+66,Lead,Tenor Sax
+67,Strings,Baritone Sax
+68,Strings,Oboe
+69,Strings,English Horn
+70,Strings,Bassoon
+71,Strings,Clarinet
+72,Lead,Piccolo
+73,Lead,Flute
+74,Lead,Recorder
+75,Lead,Pan Flute
+76,Lead,Bottle Blow
+77,Lead,Shakuhachi
+78,Lead,Whistle
+79,Lead,Ocarina
+80,Lead,Lead 1 (square)
+81,Lead,Lead 2 (sawtooth)
+82,Lead,Lead 3 (calliope lead)
+83,Lead,Lead 4 (chiffer lead)
+84,Lead,Lead 5 (charang)
+85,Lead,Lead 6 (voice)
+86,Lead,Lead 7 (fifths)
+87,Lead,Lead 8 (brass + lead)
+88,Piano,Pad 1 (new age)
+89,Strings,Pad 2 (warm)
+90,Strings,Pad 3 (polysynth)
+91,Strings,Pad 4 (choir)
+92,Strings,Pad 5 (bowed)
+93,Strings,Pad 6 (metallic)
+94,Strings,Pad 7 (halo)
+95,Strings,Pad 8 (sweep)
+96,Strings,FX 1 (rain)
+97,Strings,FX 2 (soundtrack)
+98,Strings,FX 3 (crystal)
+99,Strings,FX 4 (atmosphere)
+100,Strings,FX 5 (brightness)
+101,Strings,FX 6 (goblins)
+102,Strings,FX 7 (echoes)
+103,Strings,FX 8 (sci-fi)
+104,Guitar,Sitar
+105,Guitar,Banjo
+106,Guitar,Shamisen
+107,Guitar,Koto
+108,Guitar,Kalimba
+109,Lead,Bagpipe
+110,Lead,Fiddle
+111,Lead,Shana
+112,Drop,Tinkle Bell
+113,Drop,Agogo
+114,Piano,Steel Drums
+115,Drop,Woodblock
+116,Drop,Taiko Drum
+117,Drop,Melodic Tom
+118,Drop,Synth Drum
+119,Drop,Reverse Cymbal
+120,Drop,Guitar Fret Noise
+121,Drop,Breath Noise
+122,Drop,Seashore
+123,Drop,Bird Tweet
+124,Drop,Telephone Ring
+125,Drop,Helicopter
+126,Drop,Applause
+127,Drop,Gunshot

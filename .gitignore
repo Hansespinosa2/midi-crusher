@@ -160,3 +160,5 @@ cython_debug/
 #.idea/
 
 test_variety_songs/*
+
+working.ipynb
