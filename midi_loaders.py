@@ -6,7 +6,7 @@ import musical_features_cleaner as mc
 
 
 
-def load_midi_files(root_directory:str = 'vg_music_database', company:str = None, console:str = None, max_files = None):
+def load_midi_files(root_directory:str, company:str = None, console:str = None, max_files = None):
     file_list = []
     for root, _, files in os.walk(root_directory):
         for file in files:
@@ -65,22 +65,8 @@ def merge_instruments(instruments:list, the_program_map, max_instruments = None,
 
     
     #If user wants to bypass the default of merging the instruments with max 4 strings, 1 guitar, 1 lead, infinite drums, 1 bass, and 2 pianos
-    if bypass_default == True: 
-        if max_instruments != None:
-            instruments = ia.get_dominant_instruments(instruments, k=max_instruments)
-    else:
-        if instruments[0].is_drum:
-            pass #Drums are always merged
-        elif the_program_map[instruments[0].program] == 'Piano':
-            instruments = ia.get_dominant_instruments(instruments, k=4)
-        elif the_program_map[instruments[0].program] == 'Guitar':
-            instruments = ia.get_dominant_instruments(instruments, k=2)
-        elif the_program_map[instruments[0].program] == 'Bass':
-            instruments = ia.get_dominant_instruments(instruments, k=2)
-        elif the_program_map[instruments[0].program] == 'Lead':
-            instruments = ia.get_dominant_instruments(instruments, k=3)
-        elif the_program_map[instruments[0].program] == 'Strings':
-            instruments = ia.get_dominant_instruments(instruments, k=4)
+    if bypass_default == True and max_instruments !=None: 
+        instruments = ia.get_dominant_instruments(instruments, k=max_instruments)
         
 
     merged = []
@@ -120,7 +106,7 @@ def merge_to_six(a_midi_file,max_instruments = None, bypass_default = False,the_
     
     return instrument_list
 
-def get_file_paths(root_directory:str = 'vg_music_database'):
+def get_file_paths(root_directory):
     file_list = []
     for root, _, files in os.walk(root_directory):
         for file in files:
