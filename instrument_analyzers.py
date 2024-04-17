@@ -8,7 +8,7 @@ def get_lowest_note(an_instr:pm.Instrument):
     return min([note.pitch for note in an_instr.notes])
 
 def separate_instruments_to_class(midi_file:pm.PrettyMIDI,the_program_map = None):
-    if the_program_map == None:
+    if the_program_map is None:
         the_program_map = ml.get_program_to_class_hash()
     separated = {}
     for instrument in midi_file.instruments:

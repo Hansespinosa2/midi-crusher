@@ -1,6 +1,6 @@
 import pretty_midi as pm
 from midi_loaders import get_file_paths, get_midi_file
-from midi_loaders import merge_to_six
+from midi_loaders import merge_to_n
 from musical_features_cleaner import is_four_four
 from instrument_analyzers import total_notes
 import argparse
@@ -27,7 +27,7 @@ def main(INPUT_DIR, OUTPUT_DIR, FOUR_FOUR:bool = True, HARSH:bool=False,CUSTOM_I
         if midi_file is not None and (is_four_four(midi_file) or ~FOUR_FOUR) and total_notes(midi_file) > 100:
             print(f"Reading {the_mid} with {len([instrument.program for instrument in midi_file.instruments])} instruments -> {i}/{len(file_paths)}")
             midi_out = pm.PrettyMIDI()
-            midi_out.instruments.extend(merge_to_six(midi_file,max_instruments,bypass_default))
+            midi_out.instruments.extend(merge_to_n(midi_file,max_instruments,bypass_default,the_program_map_path=CUSTOM_INSTRUMENTS, the_class_to_program_path=CUSTOM_PROGRAMS))
             print(f"Writing {the_mid} with {len([instrument.program for instrument in midi_out.instruments])} instruments  -> {i}/{len(file_paths)}")
             midi_out.write(f"{output_path}OUT_{i}_{the_mid}")
         else:

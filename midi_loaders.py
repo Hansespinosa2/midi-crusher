@@ -87,13 +87,14 @@ def merge_instruments(instruments:list, the_program_map, max_instruments = None,
     the_instrument.notes.extend(merged)
     return the_instrument
         
-def merge_to_six(a_midi_file,max_instruments = None, bypass_default = False,the_program_map_path=None, the_class_to_program_path=None):
+def merge_to_n(a_midi_file,max_instruments = None, bypass_default = False,the_program_map_path=None, the_class_to_program_path=None):
     if the_program_map_path is None and the_class_to_program_path is None:
         the_program_map = get_program_to_compressed_hash()
         the_class_to_program_map = class_to_program_mapping
     else:
         the_program_map = read_custom_program_map(the_program_map_path)
         the_class_to_program_map = read_custom_class_to_program_mapping(the_class_to_program_path)
+    print(the_class_to_program_map)
     the_dict = ia.separate_instruments_to_class(a_midi_file,the_program_map=the_program_map)
     instrument_list = []
 

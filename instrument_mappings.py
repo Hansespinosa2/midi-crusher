@@ -1,4 +1,6 @@
 import pandas as pd
+import json
+
 program_map_all_midis = [
     (0, 'Piano', 'Acoustic Grand Piano'),
     (1, 'Piano', 'Bright Acoustic Piano'),
@@ -273,7 +275,8 @@ class_to_program_mapping = {
 }
 
 def read_custom_program_map(filename:str):
-    return pd.read_csv(filename).to_numpy()
+    return pd.read_csv(filename).to_dict()['Compressed Instrument']
 
 def read_custom_class_to_program_mapping(filename:str):
-    return pd.read_csv(filename).to_dict()['Instrument']
+    with open(filename, 'r') as f:
+        return json.load(f)
