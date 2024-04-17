@@ -9,3 +9,5 @@ Create a folder inside of the repository with the midi files that you would like
 Here is an example of usage:
 
 `python3 run.py input_dir output_dir --HARSH --FOUR_FOUR`
+
+This would run through all the midi files in the input_dir, and standardize them via the default six instrument mapping (guitar, piano, bass, drums, synth, and strings) and cut out all but the most important instruments and all non standard time songs.
