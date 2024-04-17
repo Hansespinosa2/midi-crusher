@@ -1,12 +1,12 @@
 import os
 import pretty_midi as pm
-from instrument_mappings import program_map_all_midis, program_map_default, class_to_program_mapping
+from instrument_mappings import program_map_all_midis, program_map_default, class_to_program_mapping, read_custom_class_to_program_mapping, read_custom_program_map
 import instrument_analyzers as ia
 import musical_features_cleaner as mc
 
 
 
-def load_midi_files(root_directory:str = 'vg_music_database', company:str = None, console:str = None,package:str= 'pretty_midi', max_files = None):
+def load_midi_files(root_directory:str = 'vg_music_database', company:str = None, console:str = None, max_files = None):
     file_list = []
     for root, _, files in os.walk(root_directory):
         for file in files:
@@ -24,29 +24,16 @@ def load_midi_files(root_directory:str = 'vg_music_database', company:str = None
 
 
 
-    
-    if package == 'pretty_midi':
-        loaded_midis = {}
-        for i, file_path in enumerate(file_list):
-            if  i >= max_files:
-                break
-            try:
-                loaded_midis[file_path] = pm.PrettyMIDI(file_path)
-            except:
-                print(f'Failed to load file {i}, {file_path}')
-        return loaded_midis
-    elif package == 'miditoolkit':
-        import miditoolkit as mt
 
-        loaded_midis = [mt.MidiFile(file_path) for file_path in file_list]
-        return loaded_midis
-    elif package == 'music21':
-        import music21 as m21
-
-        loaded_midis = [m21.converter.parse(file_path) for file_path in file_list]
-        return loaded_midis
-    else:
-        return None
+    loaded_midis = {}
+    for i, file_path in enumerate(file_list):
+        if  i >= max_files:
+            break
+        try:
+            loaded_midis[file_path] = pm.PrettyMIDI(file_path)
+        except:
+            print(f'Failed to load file {i}, {file_path}')
+    return loaded_midis
     
 
 
@@ -60,7 +47,7 @@ def get_program_to_compressed_hash():
     return hash_table
 
 
-def merge_instruments(instruments:list, the_program_map = None, max_instruments = None, bypass_default = False):
+def merge_instruments(instruments:list, the_program_map, max_instruments = None, bypass_default = False,class_to_program_map = None):
     """
     Merge multiple same programmed instruments into a single instrument.
     
@@ -75,8 +62,7 @@ def merge_instruments(instruments:list, the_program_map = None, max_instruments 
     """
     instruments = [instrument for instrument in instruments if len(instrument.notes) > 0 and not mc.is_extreme_pitched(instrument)]
 
-    if the_program_map == None:
-        the_program_map = get_program_to_class_hash()
+
     
     #If user wants to bypass the default of merging the instruments with max 4 strings, 1 guitar, 1 lead, infinite drums, 1 bass, and 2 pianos
     if bypass_default == True: 
@@ -106,7 +92,7 @@ def merge_instruments(instruments:list, the_program_map = None, max_instruments 
 
     name = the_program_map[instruments[0].program] if not instruments[0].is_drum else 'Drums'
     if name != 'Drop':
-        the_program = class_to_program_mapping[name]
+        the_program = class_to_program_map[name]
         the_instrument = pm.Instrument(the_program, instruments[0].is_drum, name)
     else:
         return None
@@ -115,13 +101,19 @@ def merge_instruments(instruments:list, the_program_map = None, max_instruments 
     the_instrument.notes.extend(merged)
     return the_instrument
         
-def merge_to_six(a_midi_file,max_instruments = None, bypass_default = False):
-    the_dict = ia.separate_instruments_to_class(a_midi_file,the_program_map=get_program_to_compressed_hash())
+def merge_to_six(a_midi_file,max_instruments = None, bypass_default = False,the_program_map_path=None, the_class_to_program_path=None):
+    if the_program_map_path is None and the_class_to_program_path is None:
+        the_program_map = get_program_to_compressed_hash()
+        the_class_to_program_map = class_to_program_mapping
+    else:
+        the_program_map = read_custom_program_map(the_program_map_path)
+        the_class_to_program_map = read_custom_class_to_program_mapping(the_class_to_program_path)
+    the_dict = ia.separate_instruments_to_class(a_midi_file,the_program_map=the_program_map)
     instrument_list = []
 
     for keys, _ in the_dict.items():
         for keys1, _ in the_dict[keys].items():
-            an_instrument = merge_instruments(the_dict[keys][keys1], the_program_map=get_program_to_compressed_hash(), max_instruments=max_instruments, bypass_default=bypass_default)
+            an_instrument = merge_instruments(the_dict[keys][keys1], the_program_map=the_program_map, max_instruments=max_instruments, bypass_default=bypass_default, class_to_program_map=the_class_to_program_map)
             if an_instrument is not None:
                 instrument_list.append(an_instrument)
             
