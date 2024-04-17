@@ -94,7 +94,6 @@ def merge_to_n(a_midi_file,max_instruments = None, bypass_default = False,the_pr
     else:
         the_program_map = read_custom_program_map(the_program_map_path)
         the_class_to_program_map = read_custom_class_to_program_mapping(the_class_to_program_path)
-    print(the_class_to_program_map)
     the_dict = ia.separate_instruments_to_class(a_midi_file,the_program_map=the_program_map)
     instrument_list = []
 
