@@ -8,4 +8,4 @@ Create a folder inside of the repository with the midi files that you would like
 
 Here is an example of usage:
 
-`Create`
+`python3 run.py input_dir output_dir --HARSH --FOUR_FOUR`
